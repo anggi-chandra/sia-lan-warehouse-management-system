@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Produksi - Sistem Manajemen Gudang</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="user-profile">
+                <div class="user-avatar"></div>
+                <div class="user-name">Admin User</div>
+                <div class="user-role">Administrator</div>
+                <a href="../profile.html" class="user-profile-link">Lihat Profil</a>
+            </div>
+            <div class="menu-group">
+                <div class="menu-group-title">Dashboard</div>
+                <ul>
+                    <li><a href="../index.html">Dashboard</a></li>
+                </ul>
+            </div>
+            <div class="menu-group">
+                <div class="menu-group-title">Master Data</div>
+                <ul>
+                    <li><a href="../customer/index.html">Data Customer</a></li>
+                    <li><a href="../bag-gudang/index.html">Data Bag Gudang</a></li>
+                    <li><a href="../gudang/index.html">Data Gudang</a></li>
+                    <li><a href="../pengirim/index.html">Data Pengirim</a></li>
+                </ul>
+            </div>
+            <div class="menu-group">
+                <div class="menu-group-title">Operasional</div>
+                <ul>
+                    <li><a href="../persediaan/index.html">Data Persediaan</a></li>
+                    <li><a href="../produksi/index.html" class="active">Data Produksi</a></li>
+                    <li><a href="../transaksi/index.html">Data Transaksi</a></li>
+                </ul>
+            </div>
+            <div class="menu-group">
+                <div class="menu-group-title">Administrasi</div>
+                <ul>
+                    <li><a href="../bag-admin/index.html">Data Bag Admin</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="page-header">
+                <h1>Edit Produksi</h1>
+                <p>Ubah data produksi</p>
+            </div>
+            <div class="form-container">
+                <form action="index.html" method="get">
+                    <div class="form-group">
+                        <label>ID Produksi</label>
+                        <input type="text" name="id" value="PRD001" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Pesanan</label>
+                        <select name="pesanan" required>
+                            <option value="">Pilih Pesanan</option>
+                            <option value="PSN001" selected>PSN001 - PT Maju Jaya</option>
+                            <option value="PSN002">PSN002 - CV Sukses Bersama</option>
+                            <option value="PSN003">PSN003 - UD Mitra Usaha</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggal Mulai</label>
+                        <input type="date" name="mulai" value="2024-01-10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggal Selesai</label>
+                        <input type="date" name="selesai" value="2024-01-20" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Jumlah</label>
+                        <input type="text" name="jumlah" value="500 unit" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="status" required>
+                            <option value="">Pilih Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Proses">Proses</option>
+                            <option value="Selesai" selected>Selesai</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <a href="index.html" class="btn-cancel">Batal</a>
+                        <button type="submit" class="btn-submit">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

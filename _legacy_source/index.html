@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistem Manajemen Gudang</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <!-- Tambahkan profil user di sidebar -->
+            <div class="user-profile">
+                <div class="user-avatar"></div>
+                <div class="user-name">Admin User</div>
+                <div class="user-role">Administrator</div>
+                <a href="profile.html" class="user-profile-link">Lihat Profil</a>
+            </div>
+
+            <!-- Kelompokkan menu menjadi beberapa kategori -->
+            <div class="menu-group">
+                <div class="menu-group-title">Dashboard</div>
+                <ul>
+                    <li><a href="index.html" class="active">Dashboard</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Master Data</div>
+                <ul>
+                    <li><a href="customer/index.html">Data Customer</a></li>
+                    <li><a href="bag-gudang/index.html">Data Bag Gudang</a></li>
+                    <li><a href="gudang/index.html">Data Gudang</a></li>
+                    <li><a href="pengirim/index.html">Data Pengirim</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Operasional</div>
+                <ul>
+                    <li><a href="persediaan/index.html">Data Persediaan</a></li>
+                    <li><a href="produksi/index.html">Data Produksi</a></li>
+                    <li><a href="transaksi/index.html">Data Transaksi</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Administrasi</div>
+                <ul>
+                    <li><a href="bag-admin/index.html">Data Bag Admin</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="content">
+            <div class="page-header">
+                <h1>Dashboard</h1>
+                <p>Selamat datang di Sistem Manajemen Gudang</p>
+            </div>
+
+            <!-- STATISTICS CARDS -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Customer</h3>
+                    <div class="value">7</div>
+                    <p>Customer Aktif</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Gudang</h3>
+                    <div class="value">6</div>
+                    <p>Lokasi Gudang</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Persediaan</h3>
+                    <div class="value">6</div>
+                    <p>Item Barang</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Transaksi</h3>
+                    <div class="value">7</div>
+                    <p>Transaksi Bulan Ini</p>
+                </div>
+            </div>
+
+            <!-- QUICK INFO -->
+            <div class="info-boxes">
+                <div class="info-box warning">
+                    <h3>Stok Menipis</h3>
+                    <ul>
+                        <li>Kardus Packaging - 150 unit</li>
+                        <li>Bubble Wrap - 75 roll</li>
+                    </ul>
+                </div>
+                <div class="info-box info">
+                    <h3>Produksi Aktif</h3>
+                    <ul>
+                        <li>PSN001 - PT Maju Jaya (Proses)</li>
+                        <li>PSN004 - PT Karya Mandiri (Proses)</li>
+                    </ul>
+                </div>
+                <div class="info-box success">
+                    <h3>Pengiriman Hari Ini</h3>
+                    <ul>
+                        <li>PGR001 - PT Maju Jaya (Terkirim)</li>
+                        <li>PGR002 - CV Sukses Bersama (Dalam Perjalanan)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- RECENT TRANSACTIONS TABLE -->
+            <div class="table-container">
+                <div class="table-header">
+                    <h2>Transaksi Terbaru</h2>
+                    <a href="transaksi/index.html" class="btn-view">Lihat Semua</a>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Transaksi</th>
+                            <th>Customer</th>
+                            <th>Tanggal</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TRX007</td>
+                            <td>UD Sumber Rezeki</td>
+                            <td>2024-01-20</td>
+                            <td>Rp 6.200.000</td>
+                            <td><span class="status-pending">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>TRX006</td>
+                            <td>PT Global Sentosa</td>
+                            <td>2024-01-19</td>
+                            <td>Rp 8.000.000</td>
+                            <td><span class="status-selesai">Selesai</span></td>
+                        </tr>
+                        <tr>
+                            <td>TRX005</td>
+                            <td>CV Berkah Jaya</td>
+                            <td>2024-01-18</td>
+                            <td>Rp 4.800.000</td>
+                            <td><span class="status-proses">Proses</span></td>
+                        </tr>
+                        <tr>
+                            <td>TRX004</td>
+                            <td>PT Karya Mandiri</td>
+                            <td>2024-01-17</td>
+                            <td>Rp 7.500.000</td>
+                            <td><span class="status-selesai">Selesai</span></td>
+                        </tr>
+                        <tr>
+                            <td>TRX003</td>
+                            <td>UD Mitra Usaha</td>
+                            <td>2024-01-16</td>
+                            <td>Rp 4.200.000</td>
+                            <td><span class="status-proses">Proses</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

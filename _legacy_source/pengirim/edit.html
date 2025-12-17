@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Pengirim - Sistem Manajemen Gudang</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="user-profile">
+                <div class="user-avatar"></div>
+                <div class="user-name">Admin User</div>
+                <div class="user-role">Administrator</div>
+                <a href="../profile.html" class="user-profile-link">Lihat Profil</a>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Dashboard</div>
+                <ul>
+                    <li><a href="../index.html">Dashboard</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Master Data</div>
+                <ul>
+                    <li><a href="../customer/index.html">Data Customer</a></li>
+                    <li><a href="../bag-gudang/index.html">Data Bag Gudang</a></li>
+                    <li><a href="../gudang/index.html">Data Gudang</a></li>
+                    <li><a href="../pengirim/index.html" class="active">Data Pengirim</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Operasional</div>
+                <ul>
+                    <li><a href="../persediaan/index.html">Data Persediaan</a></li>
+                    <li><a href="../produksi/index.html">Data Produksi</a></li>
+                    <li><a href="../transaksi/index.html">Data Transaksi</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Administrasi</div>
+                <ul>
+                    <li><a href="../bag-admin/index.html">Data Bag Admin</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="content">
+            <div class="page-header">
+                <h1>Edit Pengirim</h1>
+                <p>Ubah data pengirim</p>
+            </div>
+
+            <div class="form-container">
+                <form action="index.html" method="get">
+                    <div class="form-group">
+                        <label>ID Pengirim</label>
+                        <input type="text" name="id" value="PGR001" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Pesanan</label>
+                        <select name="pesanan" required>
+                            <option value="">Pilih Pesanan</option>
+                            <option value="PSN001" selected>PSN001 - PT Maju Jaya</option>
+                            <option value="PSN002">PSN002 - CV Sukses Bersama</option>
+                            <option value="PSN003">PSN003 - UD Mitra Usaha</option>
+                            <option value="PSN004">PSN004 - PT Karya Mandiri</option>
+                            <option value="PSN005">PSN005 - CV Berkah Jaya</option>
+                            <option value="PSN006">PSN006 - PT Global Sentosa</option>
+                            <option value="PSN007">PSN007 - UD Sumber Rezeki</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Pengirim</label>
+                        <input type="text" name="nama" value="Joko Widodo" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Status Pengiriman</label>
+                        <select name="status" required>
+                            <option value="">Pilih Status</option>
+                            <option value="Menunggu">Menunggu</option>
+                            <option value="Dalam Perjalanan">Dalam Perjalanan</option>
+                            <option value="Terkirim" selected>Terkirim</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggal Pengiriman</label>
+                        <input type="date" name="tanggal" value="2024-01-20" required>
+                    </div>
+                    <div class="form-actions">
+                        <a href="index.html" class="btn-cancel">Batal</a>
+                        <button type="submit" class="btn-submit">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

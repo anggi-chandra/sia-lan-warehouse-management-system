@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil User - Sistem Manajemen Gudang</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="user-profile">
+                <div class="user-avatar"></div>
+                <div class="user-name">Admin User</div>
+                <div class="user-role">Administrator</div>
+                <a href="profile.html" class="user-profile-link">Lihat Profil</a>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Dashboard</div>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Master Data</div>
+                <ul>
+                    <li><a href="customer/index.html">Data Customer</a></li>
+                    <li><a href="bag-gudang/index.html">Data Bag Gudang</a></li>
+                    <li><a href="gudang/index.html">Data Gudang</a></li>
+                    <li><a href="pengirim/index.html">Data Pengirim</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Operasional</div>
+                <ul>
+                    <li><a href="persediaan/index.html">Data Persediaan</a></li>
+                    <li><a href="produksi/index.html">Data Produksi</a></li>
+                    <li><a href="transaksi/index.html">Data Transaksi</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Administrasi</div>
+                <ul>
+                    <li><a href="bag-admin/index.html">Data Bag Admin</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="content">
+            <div class="page-header">
+                <h1>Profil User</h1>
+                <p>Kelola informasi profil Anda</p>
+            </div>
+
+            <div class="table-container">
+                <div class="table-header">
+                    <h2>Informasi Profil</h2>
+                </div>
+                <div style="padding: 30px;">
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <label>Nama Lengkap</label>
+                            <p>Admin User</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Email</label>
+                            <p>admin@gudang.com</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Nomor Telepon</label>
+                            <p>+62-812-3456-7890</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Jabatan</label>
+                            <p>Administrator</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Departemen</label>
+                            <p>IT & Sistem</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Status</label>
+                            <p><span class="status-tersedia">Aktif</span></p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Tanggal Bergabung</label>
+                            <p>15 Januari 2024</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Terakhir Login</label>
+                            <p>28 Oktober 2024 - 14:30</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #ecf0f1;">
+                        <h3 style="color: #2c3e50; margin-bottom: 20px;">Ubah Password</h3>
+                        <form action="profile.html" method="get">
+                            <div class="form-group">
+                                <label>Password Lama</label>
+                                <input type="password" name="old_password" placeholder="Masukkan password lama">
+                            </div>
+                            <div class="form-group">
+                                <label>Password Baru</label>
+                                <input type="password" name="new_password" placeholder="Masukkan password baru">
+                            </div>
+                            <div class="form-group">
+                                <label>Konfirmasi Password Baru</label>
+                                <input type="password" name="confirm_password" placeholder="Konfirmasi password baru">
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button type="submit" class="btn-primary">Ubah Password</button>
+                                <button type="reset" class="btn-secondary">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #ecf0f1;">
+                        <h3 style="color: #2c3e50; margin-bottom: 20px;">Keluar dari Sistem</h3>
+                        <p style="color: #7f8c8d; margin-bottom: 15px;">Anda akan keluar dari sistem dan harus login
+                            kembali untuk mengakses aplikasi.</p>
+                        <a href="login.html" class="btn-danger" style="display: inline-block; text-decoration: none;">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

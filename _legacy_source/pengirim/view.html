@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Pengirim - Sistem Manajemen Gudang</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="user-profile">
+                <div class="user-avatar"></div>
+                <div class="user-name">Admin User</div>
+                <div class="user-role">Administrator</div>
+                <a href="../profile.html" class="user-profile-link">Lihat Profil</a>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Dashboard</div>
+                <ul>
+                    <li><a href="../index.html">Dashboard</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Master Data</div>
+                <ul>
+                    <li><a href="../customer/index.html">Data Customer</a></li>
+                    <li><a href="../bag-gudang/index.html">Data Bag Gudang</a></li>
+                    <li><a href="../gudang/index.html">Data Gudang</a></li>
+                    <li><a href="../pengirim/index.html" class="active">Data Pengirim</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Operasional</div>
+                <ul>
+                    <li><a href="../persediaan/index.html">Data Persediaan</a></li>
+                    <li><a href="../produksi/index.html">Data Produksi</a></li>
+                    <li><a href="../transaksi/index.html">Data Transaksi</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-group-title">Administrasi</div>
+                <ul>
+                    <li><a href="../bag-admin/index.html">Data Bag Admin</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="content">
+            <div class="page-header">
+                <h1>Detail Pengirim</h1>
+                <p>Informasi lengkap pengirim</p>
+            </div>
+
+            <div class="table-container">
+                <div class="table-header">
+                    <h2>Detail Pengirim</h2>
+                    <a href="index.html" class="btn-secondary">Kembali</a>
+                </div>
+                <div style="padding: 30px;">
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <label>ID Pengirim</label>
+                            <p>PGR001</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Pesanan</label>
+                            <p>PSN001 - PT Maju Jaya</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Nama Pengirim</label>
+                            <p>Joko Widodo</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Status Pengiriman</label>
+                            <p><span class="status-terkirim">Terkirim</span></p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Tanggal Pengiriman</label>
+                            <p>2024-01-20</p>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <a href="edit.html" class="btn-primary">Edit Data</a>
+                        <a href="index.html" class="btn-delete">Hapus Data</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

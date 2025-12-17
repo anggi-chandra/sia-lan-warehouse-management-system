@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Transaksi - Sistem Manajemen Gudang</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="user-profile">
+                <div class="user-avatar"></div>
+                <div class="user-name">Admin User</div>
+                <div class="user-role">Administrator</div>
+                <a href="../profile.html" class="user-profile-link">Lihat Profil</a>
+            </div>
+            <div class="menu-group">
+                <div class="menu-group-title">Dashboard</div>
+                <ul>
+                    <li><a href="../index.html">Dashboard</a></li>
+                </ul>
+            </div>
+            <div class="menu-group">
+                <div class="menu-group-title">Master Data</div>
+                <ul>
+                    <li><a href="../customer/index.html">Data Customer</a></li>
+                    <li><a href="../bag-gudang/index.html">Data Bag Gudang</a></li>
+                    <li><a href="../gudang/index.html">Data Gudang</a></li>
+                    <li><a href="../pengirim/index.html">Data Pengirim</a></li>
+                </ul>
+            </div>
+            <div class="menu-group">
+                <div class="menu-group-title">Operasional</div>
+                <ul>
+                    <li><a href="../persediaan/index.html">Data Persediaan</a></li>
+                    <li><a href="../produksi/index.html">Data Produksi</a></li>
+                    <li><a href="../transaksi/index.html" class="active">Data Transaksi</a></li>
+                </ul>
+            </div>
+            <div class="menu-group">
+                <div class="menu-group-title">Administrasi</div>
+                <ul>
+                    <li><a href="../bag-admin/index.html">Data Bag Admin</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="page-header">
+                <h1>Tambah Transaksi</h1>
+                <p>Tambahkan data transaksi baru</p>
+            </div>
+            <div class="form-container">
+                <form action="index.html" method="get">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>ID Pesanan</label>
+                            <input type="text" name="pesanan" placeholder="Contoh: PSN008" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Customer</label>
+                            <input type="text" name="customer" placeholder="Nama Customer" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Admin</label>
+                            <input type="text" name="admin" placeholder="Nama Admin" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Tanggal Transaksi</label>
+                            <input type="date" name="tanggal" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Jenis Pesanan</label>
+                            <input type="text" name="jenis" placeholder="Jenis Pesanan" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nominal DP</label>
+                            <input type="number" name="dp" placeholder="Nominal DP" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Jenis Payment</label>
+                            <select name="payment" required>
+                                <option value="">Pilih Jenis Payment</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Transfer">Transfer</option>
+                                <option value="Kredit">Kredit</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Status Pelunasan</label>
+                            <select name="pelunasan" required>
+                                <option value="">Pilih Status</option>
+                                <option value="Lunas">Lunas</option>
+                                <option value="Belum Lunas">Belum Lunas</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Total Pesanan</label>
+                            <input type="number" name="total" placeholder="Total Pesanan" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Jumlah Pesanan</label>
+                            <input type="number" name="jumlah" placeholder="Jumlah Pesanan" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nama Barang</label>
+                            <input type="text" name="barang" placeholder="Nama Barang" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Harga Pesanan</label>
+                            <input type="number" name="harga" placeholder="Harga Pesanan" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <a href="../transaksi/index.html" class="btn-cancel">Batal</a>
+                        <button type="submit" class="btn-submit">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
