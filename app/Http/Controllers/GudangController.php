@@ -10,7 +10,7 @@ class GudangController extends Controller
 {
     public function index()
     {
-        $gudangs = Gudang::all();
+        $gudangs = Gudang::latest()->paginate(10);
         return view('gudang.index', compact('gudangs'));
     }
 
