@@ -1,59 +1,91 @@
 @extends('layouts.app')
 
+@section('title', 'Data Persediaan - Sistem Manajemen Gudang')
+
 @section('content')
-    <div class="page-header">
-        <h1>Data Persediaan</h1>
-        <p>Kelola data stok barang</p>
+    <div class="mb-10 flex items-center justify-between">
+        <div>
+            <h1 class="text-3xl font-extrabold text-primary tracking-tight">Data Persediaan</h1>
+            <p class="text-primary/60 font-medium mt-1">Monitor stok dan ketersediaan barang di gudang.</p>
+        </div>
+        <a href="{{ route('persediaan.create') }}" class="inline-flex items-center justify-center rounded-xl bg-secondary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-secondary/30 hover:bg-secondary/90 transition-all">
+            <i class="fas fa-plus mr-2"></i> Tambah Persediaan
+        </a>
     </div>
 
-    <div class="table-container">
-        <div class="table-header">
-            <h2>Daftar Persediaan</h2>
-            <a href="{{ route('persediaan.create') }}" class="btn-add">Tambah Persediaan</a>
+    <div class="bg-white rounded-3xl shadow-sm border border-primary/5 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left">
+                <thead>
+                    <tr class="bg-gray-50/50 border-b border-gray-100 text-xs uppercase tracking-wider text-primary/50">
+                        <th class="px-8 py-6 font-bold">ID Persediaan</th>
+                        <th class="px-6 py-6 font-bold">Nama Barang</th>
+                        <th class="px-6 py-6 font-bold">Lokasi Gudang</th>
+                        <th class="px-6 py-6 font-bold text-center">Stok</th>
+                        <th class="px-6 py-6 font-bold text-center">Status</th>
+                        <th class="px-8 py-6 font-bold text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                    @forelse($persediaans as $persediaan)
+                    <tr class="hover:bg-gray-50/50 transition-colors group">
+                        <td class="px-8 py-4 font-bold text-secondary">
+                            {{ $persediaan->kode_persediaan }}
+                        </td>
+                        <td class="px-6 py-4 font-bold text-primary">
+                            {{ $persediaan->nama_barang }}
+                        </td>
+                         <td class="px-6 py-4 text-sm font-medium text-gray-500">
+                            {{ $persediaan->gudang->name ?? 'N/A' }}
+                        </td>
+                        <td class="px-6 py-4 font-bold text-center text-primary">
+                            {{ $persediaan->stok }}
+                        </td>
+                         <td class="px-6 py-4 text-center">
+                            @if($persediaan->status == 'Tersedia')
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-800">
+                                    <i class="fas fa-check-circle mr-1"></i> Tersedia
+                                </span>
+                            @elseif($persediaan->status == 'Menipis')
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-yellow-100 text-yellow-800">
+                                    <i class="fas fa-exclamation-triangle mr-1"></i> Menipis
+                                </span>
+                            @else
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-800">
+                                     <i class="fas fa-times-circle mr-1"></i> Habis
+                                </span>
+                            @endif
+                        </td>
+                        <td class="px-8 py-4 text-center">
+                            <div class="inline-flex items-center gap-2 opacity-100 transition-opacity">
+                                <a href="{{ route('persediaan.show', $persediaan->id) }}" class="p-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors" title="Lihat Detail">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="{{ route('persediaan.edit', $persediaan->id) }}" class="p-2 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form action="{{ route('persediaan.destroy', $persediaan->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="p-2 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 transition-colors" title="Hapus">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                         <td colspan="6" class="text-center py-10 text-gray-400 font-medium">
+                            <div class="flex flex-col items-center justify-center">
+                                <i class="fas fa-boxes text-4xl mb-3 opacity-20"></i>
+                                <p>Belum ada data persediaan.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID Persediaan</th>
-                    <th>Gudang</th>
-                    <th>Nama Barang</th>
-                    <th>Stok</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($persediaans as $persediaan)
-                <tr>
-                    <td>{{ $persediaan->kode_persediaan }}</td>
-                    <td>{{ $persediaan->gudang->name ?? 'N/A' }}</td>
-                    <td>{{ $persediaan->nama_barang }}</td>
-                    <td>{{ $persediaan->stok }}</td>
-                    <td><span class="status-{{ strtolower($persediaan->status) }}">{{ $persediaan->status }}</span></td>
-                    <td>
-                        <a href="{{ route('persediaan.show', $persediaan->id) }}" class="btn-view"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
-</svg></a>
-                        <a href="{{ route('persediaan.edit', $persediaan->id) }}" class="btn-edit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-</svg></a>
-                        <form action="{{ route('persediaan.destroy', $persediaan->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn-delete"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-  <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
-</svg></button>
-                        </form>
-                    </td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="6" style="text-align: center;">Tidak ada data persediaan</td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
     </div>
 @endsection

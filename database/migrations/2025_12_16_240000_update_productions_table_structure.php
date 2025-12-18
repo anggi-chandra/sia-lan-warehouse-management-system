@@ -18,6 +18,7 @@ return new class extends Migration
                 $table->dropColumn('product_id');
             }
             if (Schema::hasColumn('productions', 'production_code')) {
+                $table->dropUnique('productions_production_code_unique');
                 $table->dropColumn('production_code');
             }
         });
