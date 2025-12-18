@@ -3,50 +3,59 @@
 @section('title', 'Tambah Customer - Sistem Manajemen Gudang')
 
 @section('content')
-    <div class="page-header">
-        <h1>Tambah Customer</h1>
-        <p>Tambahkan data customer baru</p>
-    </div>
+    <div class="max-w-3xl mx-auto">
+        <div class="mb-10 text-center">
+            <h1 class="text-3xl font-extrabold text-primary tracking-tight">Tambah Customer</h1>
+            <p class="text-primary/60 font-medium mt-1">Tambahkan mitra bisnis baru ke dalam sistem.</p>
+        </div>
 
-    <div class="form-container">
-        <form action="{{ route('customer.store') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="customer_code">ID Customer</label>
-                <input type="text" name="customer_code" id="customer_code" value="{{ old('customer_code') }}" placeholder="Contoh: CUST008" required>
-                @error('customer_code')
-                    <div style="color: red; font-size: 12px; margin-top: 5px;">{{ $message }}</div>
-                @enderror
-            </div>
+        <div class="bg-white rounded-3xl shadow-sm border border-primary/5 p-8 relative overflow-hidden">
+            <form action="{{ route('customer.store') }}" method="POST" class="space-y-6 relative z-10">
+                @csrf
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-primary mb-2">ID Customer</label>
+                        <input type="text" name="customer_code" value="{{ old('customer_code') }}" placeholder="Contoh: CUST008" class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" required>
+                        @error('customer_code')
+                            <p class="text-red-500 text-xs font-bold mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-            <div class="form-group">
-                <label for="name">Nama</label>
-                <input type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Nama Customer" required>
-                @error('name')
-                    <div style="color: red; font-size: 12px; margin-top: 5px;">{{ $message }}</div>
-                @enderror
-            </div>
+                    <div>
+                        <label class="block text-sm font-bold text-primary mb-2">Nama Lengkap</label>
+                        <input type="text" name="name" value="{{ old('name') }}" placeholder="PT. Sukses Makmur" class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" required>
+                        @error('name')
+                            <p class="text-red-500 text-xs font-bold mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-            <div class="form-group">
-                <label for="address">Alamat</label>
-                <textarea name="address" id="address" rows="3" placeholder="Alamat lengkap" required>{{ old('address') }}</textarea>
-                @error('address')
-                    <div style="color: red; font-size: 12px; margin-top: 5px;">{{ $message }}</div>
-                @enderror
-            </div>
+                    <div>
+                        <label class="block text-sm font-bold text-primary mb-2">Nomor Telepon</label>
+                        <input type="text" name="phone" value="{{ old('phone') }}" placeholder="081234567890" class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" required>
+                        @error('phone')
+                            <p class="text-red-500 text-xs font-bold mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-            <div class="form-group">
-                <label for="phone">No. Telepon</label>
-                <input type="text" name="phone" id="phone" value="{{ old('phone') }}" placeholder="Nomor telepon" required>
-                @error('phone')
-                    <div style="color: red; font-size: 12px; margin-top: 5px;">{{ $message }}</div>
-                @enderror
-            </div>
+                    <div>
+                        <label class="block text-sm font-bold text-primary mb-2">Alamat Lengkap</label>
+                        <textarea name="address" rows="3" placeholder="Jl. Sudirman No. 123, Jakarta Selatan" class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" required>{{ old('address') }}</textarea>
+                        @error('address')
+                            <p class="text-red-500 text-xs font-bold mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
 
-            <div class="form-actions">
-                <a href="{{ route('customer.index') }}" class="btn-cancel">Batal</a>
-                <button type="submit" class="btn-submit">Simpan</button>
-            </div>
-        </form>
+                <div class="pt-6 border-t border-gray-100 flex items-center justify-end gap-3">
+                    <a href="{{ route('customer.index') }}" class="inline-flex items-center justify-center rounded-xl bg-gray-100 px-6 py-3 text-sm font-bold text-gray-600 hover:bg-gray-200 transition-all">
+                        Batal
+                    </a>
+                    <button type="submit" class="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all">
+                        Simpan Data
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 @endsection
