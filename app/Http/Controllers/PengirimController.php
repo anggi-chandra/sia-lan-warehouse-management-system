@@ -10,8 +10,12 @@ class PengirimController extends Controller
 {
     public function index()
     {
-        $pengirims = Pengirim::with('pesanan.customer')->get();
-        return view('pengirim.index', compact('pengirims'));
+        $pengirims = Pengirim::with('pesanan.customer')->latest()->paginate(10);
+        $pesanans = Transaction::with('customer:id,name')
+            ->select('id', 'transaction_code', 'customer_id')
+            ->latest()
+            ->get();
+        return view('pengirim.index', compact('pengirims', 'pesanans'));
     }
 
     public function create()
