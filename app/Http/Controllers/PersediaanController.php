@@ -13,8 +13,10 @@ class PersediaanController extends Controller
 {
     public function index()
     {
-        $persediaans = Persediaan::with(['gudang', 'bagGudang'])->get();
-        return view('persediaan.index', compact('persediaans'));
+        $persediaans = Persediaan::with(['gudang', 'bagGudang'])->latest()->paginate(10);
+        $gudangs = Gudang::all();
+        $bagGudangs = BagGudang::all();
+        return view('persediaan.index', compact('persediaans', 'gudangs', 'bagGudangs'));
     }
 
     public function create()
