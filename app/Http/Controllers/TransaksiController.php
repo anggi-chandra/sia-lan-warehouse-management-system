@@ -23,6 +23,12 @@ class TransaksiController extends Controller
 
     public function store(Request $request)
     {
+        // Sanitize currency inputs (remove dots)
+        $request->merge([
+            'harga_pesanan' => str_replace('.', '', $request->harga_pesanan),
+            'nominal_dp' => str_replace('.', '', $request->nominal_dp),
+        ]);
+
         $request->validate([
             'transaction_code' => 'required|string|max:255|unique:transactions',
             'customer_id' => 'required|exists:customers,id',
@@ -59,6 +65,12 @@ class TransaksiController extends Controller
 
     public function update(Request $request, Transaction $transaksi)
     {
+        // Sanitize currency inputs (remove dots)
+        $request->merge([
+            'harga_pesanan' => str_replace('.', '', $request->harga_pesanan),
+            'nominal_dp' => str_replace('.', '', $request->nominal_dp),
+        ]);
+
         $request->validate([
             'transaction_code' => 'required|string|max:255|unique:transactions,transaction_code,' . $transaksi->id,
             'customer_id' => 'required|exists:customers,id',
