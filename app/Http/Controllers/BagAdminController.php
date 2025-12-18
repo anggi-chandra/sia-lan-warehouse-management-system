@@ -12,7 +12,7 @@ class BagAdminController extends Controller
 {
     public function index(): View
     {
-        $bagAdmins = BagAdmin::with('user')->get();
+        $bagAdmins = BagAdmin::with('user')->latest()->paginate(10);
         return view('bag-admin.index', compact('bagAdmins'));
     }
 
