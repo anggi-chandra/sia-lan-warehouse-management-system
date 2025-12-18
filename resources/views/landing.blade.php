@@ -4,371 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Manajemen Gudang - SIA LAN</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <style>
-        /* Landing Page Styles */
-        .landing-page {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .landing-page::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .landing-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Navigation */
-        .landing-nav {
-            padding: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .landing-logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-        }
-
-        .landing-nav-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn-landing {
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .btn-landing-outline {
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-        }
-
-        .btn-landing-outline:hover {
-            background: white;
-            color: #667eea;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn-landing-solid {
-            background: white;
-            color: #667eea;
-            border: 2px solid white;
-        }
-
-        .btn-landing-solid:hover {
-            background: #f8f9fa;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            text-align: center;
-            padding: 80px 0 100px;
-            color: white;
-        }
-
-        .hero-title {
-            font-size: 56px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .hero-subtitle {
-            font-size: 22px;
-            margin-bottom: 40px;
-            opacity: 0.95;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 40px;
-            animation: fadeInUp 1.2s ease;
-        }
-
-        /* Features Section */
-        .features-section {
-            background: white;
-            padding: 80px 0;
-            margin-top: -50px;
-            border-radius: 50px 50px 0 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 18px;
-            color: #7f8c8d;
-            margin-bottom: 60px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .feature-card {
-            background: #f8f9fa;
-            padding: 40px 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-color: #667eea;
-        }
-
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .feature-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-
-        .feature-description {
-            font-size: 15px;
-            color: #7f8c8d;
-            line-height: 1.6;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            padding: 80px 0;
-            text-align: center;
-            color: white;
-        }
-
-        .cta-title {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .cta-subtitle {
-            font-size: 20px;
-            opacity: 0.9;
-            margin-bottom: 40px;
-        }
-
-        /* Footer */
-        .landing-footer {
-            background: #1a252f;
-            padding: 30px 0;
-            text-align: center;
-            color: #95a5a6;
-            font-size: 14px;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 36px;
-            }
-
-            .hero-subtitle {
-                font-size: 18px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn-landing {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .landing-nav {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-    <div class="landing-page">
-        <div class="landing-container">
-            <!-- Navigation -->
-            <nav class="landing-nav">
-                <a href="#" class="landing-logo">📦 SIA LAN Warehouse</a>
-                <div class="landing-nav-buttons">
-                    <a href="{{ route('login') }}" class="btn-landing btn-landing-outline">Masuk</a>
-                </div>
-            </nav>
-
-            <!-- Hero Section -->
-            <div class="hero-section">
-                <h1 class="hero-title">Kelola Gudang Anda<br>Dengan Lebih Mudah</h1>
-                <p class="hero-subtitle">
-                    Sistem Manajemen Gudang yang terintegrasi untuk mengelola persediaan, 
-                    transaksi, produksi, dan pengiriman dengan efisien dan akurat.
-                </p>
-                <div class="hero-buttons">
-                    <a href="{{ route('login') }}" class="btn-landing btn-landing-solid">Mulai Sekarang</a>
-                </div>
+<body class="bg-background text-foreground antialiased font-sans">
+    
+    <div class="flex min-h-screen flex-col overflow-x-hidden">
+        
+        <!-- Navigation (Transparent) -->
+        <header class="w-full absolute top-0 z-50 py-4">
+            <div class="container mx-auto flex items-center justify-between px-6">
+                <a href="#" class="flex items-center space-x-2 font-extrabold text-primary hover:opacity-80 transition-opacity">
+                    <i class="fas fa-boxes-stacked text-2xl text-secondary"></i>
+                    <span class="text-xl tracking-tight">SIA LAN Warehouse</span>
+                </a>
+                <nav class="flex items-center">
+                    <a href="{{ route('login') }}" class="rounded-full bg-white/30 backdrop-blur-sm px-6 py-2 text-sm font-bold text-primary hover:bg-white/50 transition-colors border border-white/20">
+                        Masuk
+                    </a>
+                </nav>
             </div>
-        </div>
+        </header>
 
-        <!-- Features Section -->
-        <div class="features-section">
-            <div class="landing-container">
-                <h2 class="section-title">Fitur Unggulan</h2>
-                <p class="section-subtitle">
-                    Solusi lengkap untuk manajemen gudang modern
-                </p>
+        <main class="flex-1">
+            <!-- Hero Section with Wave -->
+            <section class="relative pt-32 pb-48 md:pt-40 md:pb-64">
+                <div class="container mx-auto px-4 relative z-10 text-center">
+                    <div class="inline-flex items-center rounded-full bg-white/30 backdrop-blur-sm border border-white/20 px-4 py-1.5 text-sm font-bold text-primary mb-8 shadow-sm">
+                        <i class="fas fa-star text-accent mr-2"></i> Sistem Manajemen Gudang v1.0
+                    </div>
+                    
+                    <h1 class="text-5xl font-extrabold tracking-tight sm:text-7xl text-primary mb-6 leading-tight">
+                        Temukan Kemudahan <br>
+                        <span class="text-secondary">Mengelola Gudang</span>
+                    </h1>
+                    
+                    <p class="text-lg font-medium text-primary/80 leading-relaxed max-w-2xl mx-auto mb-10">
+                        Kelola gudang Anda dengan cara yang menyenangkan, efisien, dan penuh warna. 
+                        Data akurat, keputusan tepat.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="{{ route('login') }}" class="w-full sm:w-auto inline-flex h-14 items-center justify-center rounded-full bg-secondary px-8 text-lg font-bold text-white shadow-lg shadow-secondary/30 transition-transform hover:scale-105 hover:bg-secondary/90">
+                            Mulai Sekarang <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bottom Wave SVG -->
+                <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180">
+                    <svg class="relative block w-[calc(100%+1.3px)] h-[150px] md:h-[200px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-white"></path>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section id="features" class="relative bg-white pb-20 pt-10">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-extrabold tracking-tight text-primary mb-4">Fitur Unggulan</h2>
+                        <p class="text-primary/70 font-medium max-w-xl mx-auto text-lg">
+                            Didesain untuk kemudahan operasional Anda.
+                        </p>
+                    </div>
+
+                    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+                        @php
+                            $features = [
+                                ['icon' => 'fas fa-chart-line', 'title' => 'Stok Real-time', 'desc' => 'Pantau jumlah barang masuk dan keluar langsung.'],
+                                ['icon' => 'fas fa-exchange-alt', 'title' => 'Transaksi', 'desc' => 'Catat setiap transaksi dengan mudah dan cepat.'],
+                                ['icon' => 'fas fa-industry', 'title' => 'Produksi', 'desc' => 'Kelola alur produksi barang dengan teratur.'],
+                                ['icon' => 'fas fa-truck-fast', 'title' => 'Pengiriman', 'desc' => 'Lacak status kiriman barang ke pelanggan.'],
+                                ['icon' => 'fas fa-users', 'title' => 'Pelanggan', 'desc' => 'Simpan data kontak pelanggan Anda.'],
+                                ['icon' => 'fas fa-file-invoice', 'title' => 'Laporan', 'desc' => 'Ringkasan data penting dalam satu tampilan.'],
+                            ];
+                        @endphp
+
+                        @foreach($features as $feature)
+                        <div class="group bg-white rounded-3xl border-2 border-[#E5E7EB] hover:border-accent p-8 transition-colors duration-300">
+                            <div class="h-14 w-14 bg-blue-50 rounded-2xl flex items-center justify-center text-accent text-2xl mb-6 shadow-sm group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                                <i class="{{ $feature['icon'] }}"></i>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-primary mb-3">{{ $feature['title'] }}</h3>
+                            <p class="text-primary/70 font-medium leading-relaxed">{{ $feature['desc'] }}</p>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- Footer Wave -->
+                 <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+                     <!-- Using same wave but maybe flipped or same direction? Let's use it as a footer topper -->
+                </div>
+            </section>
+
+            <!-- CTA/Footer Section -->
+            <section class="bg-primary pt-32 pb-12 relative overflow-hidden">
+                 <!-- Wave Top of Footer -->
+                <div class="absolute top-0 left-0 w-full overflow-hidden leading-none">
+                    <svg class="relative block w-[calc(100%+1.3px)] h-[80px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-white"></path>
+                    </svg>
+                </div>
+
+                <div class="container mx-auto px-4 text-center relative z-10">
+                    <h2 class="text-3xl font-extrabold tracking-tight text-white mb-8">
+                        Siap Menggunakan?
+                    </h2>
+                    <a href="{{ route('login') }}" class="inline-flex h-14 items-center justify-center rounded-full bg-accent px-10 text-lg font-bold text-primary shadow-lg transition-transform hover:scale-105 hover:bg-accent/90">
+                        Masuk Dashboard
+                    </a>
+                    
+                    <div class="mt-20 border-t border-white/10 pt-8">
+                         <p class="text-sm text-white/60 font-medium">
+                            &copy; {{ date('Y') }} SIA LAN Warehouse. Designed with ❤️
+                        </p>
+                    </div>
+                </div>
                 
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <span class="feature-icon">📊</span>
-                        <h3 class="feature-title">Manajemen Persediaan</h3>
-                        <p class="feature-description">
-                            Pantau stok barang secara real-time dengan sistem yang terintegrasi 
-                            dan mudah digunakan.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <span class="feature-icon">🔄</span>
-                        <h3 class="feature-title">Transaksi Terintegrasi</h3>
-                        <p class="feature-description">
-                            Kelola semua transaksi masuk dan keluar dengan sistem yang 
-                            otomatis dan akurat.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <span class="feature-icon">🏭</span>
-                        <h3 class="feature-title">Manajemen Produksi</h3>
-                        <p class="feature-description">
-                            Pantau proses produksi dari awal hingga selesai dengan 
-                            detail yang lengkap.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <span class="feature-icon">🚚</span>
-                        <h3 class="feature-title">Tracking Pengiriman</h3>
-                        <p class="feature-description">
-                            Lacak status pengiriman barang dengan mudah dan dapatkan 
-                            notifikasi real-time.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <span class="feature-icon">👥</span>
-                        <h3 class="feature-title">Manajemen Customer</h3>
-                        <p class="feature-description">
-                            Kelola data customer dengan sistem yang terorganisir dan 
-                            mudah diakses.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <span class="feature-icon">📈</span>
-                        <h3 class="feature-title">Dashboard Analytics</h3>
-                        <p class="feature-description">
-                            Lihat ringkasan data penting dalam satu dashboard yang 
-                            informatif dan mudah dipahami.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <div class="landing-container">
-                <h2 class="cta-title">Siap Memulai?</h2>
-                <p class="cta-subtitle">
-                    Daftar sekarang dan rasakan kemudahan mengelola gudang Anda
-                </p>
-                <a href="{{ route('login') }}" class="btn-landing btn-landing-solid">Masuk ke Sistem</a>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="landing-footer">
-            <div class="landing-container">
-                <p>&copy; {{ date('Y') }} SIA LAN Warehouse Management System. All rights reserved.</p>
-            </div>
-        </div>
+                <!-- Decorative Circles in Footer -->
+                <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/20 rounded-full blur-3xl"></div>
+                <div class="absolute top-1/2 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+            </section>
+        </main>
     </div>
 </body>
 </html>
-
