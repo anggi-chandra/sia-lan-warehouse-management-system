@@ -10,8 +10,13 @@ class ProduksiController extends Controller
 {
     public function index()
     {
-        $produksis = Produksi::with('pesanan.customer')->get();
-        return view('produksi.index', compact('produksis'));
+        $produksis = Produksi::with('pesanan.customer')->latest()->paginate(10);
+        $pesanans = Transaction::with('customer:id,name')
+            ->select('id', 'transaction_code', 'customer_id')
+            ->latest()
+            ->get();
+            
+        return view('produksi.index', compact('produksis', 'pesanans'));
     }
 
     public function create()
