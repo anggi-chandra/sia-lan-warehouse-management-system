@@ -8,9 +8,9 @@
             <h1 class="text-3xl font-extrabold text-primary tracking-tight">Data Bagian Gudang</h1>
             <p class="text-primary/60 font-medium mt-1">Kelola data staf dan personel gudang.</p>
         </div>
-        <a href="{{ route('bag-gudang.create') }}" class="inline-flex items-center justify-center rounded-xl bg-secondary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-secondary/30 hover:bg-secondary/90 transition-all">
+        <button onclick="openModal()" class="inline-flex items-center justify-center rounded-xl bg-secondary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-secondary/30 hover:bg-secondary/90 transition-all cursor-pointer">
             <i class="fas fa-plus mr-2"></i> Tambah Personel
-        </a>
+        </button>
     </div>
 
     <div class="bg-white rounded-3xl shadow-sm border border-primary/5 overflow-hidden">
@@ -71,5 +71,104 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- Pagination -->
+        <div class="px-8 py-6 border-t border-gray-100">
+            {{ $bagGudangs->links() }}
+        </div>
     </div>
+
+    @push('modals')
+    <!-- CREATE MODAL -->
+    <div id="createModal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm" id="modalBackdrop" onclick="closeModal()"></div>
+
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <!-- Modal Panel -->
+                <div class="relative overflow-hidden rounded-3xl bg-white text-left shadow-2xl sm:my-8 sm:w-full sm:max-w-2xl" id="modalPanel">
+                    
+                    <!-- Close Button -->
+                    <button type="button" onclick="closeModal()" class="absolute right-6 top-6 text-gray-400 hover:text-gray-500 focus:outline-none transition-colors">
+                        <span class="sr-only">Close</span>
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+
+                    <div class="bg-white px-8 py-8">
+                         <div class="text-center mb-6">
+                            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 mb-4">
+                                 <i class="fas fa-users-cog text-2xl text-secondary"></i>
+                            </div>
+                            <h3 class="text-2xl font-extrabold text-primary leading-6" id="modal-title">Tambah Personel Gudang</h3>
+                            <p class="text-sm text-gray-500 mt-2 font-medium">Daftarkan staf baru untuk pengelolaan gudang.</p>
+                        </div>
+
+                        <form action="{{ route('bag-gudang.store') }}" method="POST" class="space-y-6">
+                            @csrf
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-bold text-primary mb-2">ID Personel</label>
+                                    <input type="text" name="kode_bag_gudang" placeholder="Contoh: STF001" class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" required>
+                                </div>
+            
+                                <div>
+                                    <label class="block text-sm font-bold text-primary mb-2">Nama Lengkap</label>
+                                    <input type="text" name="nama" placeholder="Nama Staf" class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" required>
+                                </div>
+            
+                                <div>
+                                    <label class="block text-sm font-bold text-primary mb-2">Email</label>
+                                    <input type="email" name="email" placeholder="staf@gudang.com" class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" required>
+                                </div>
+            
+                                <div>
+                                    <label class="block text-sm font-bold text-primary mb-2">Nomor Telepon</label>
+                                    <input type="text" name="no_telepon" placeholder="081234567890" class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" required>
+                                </div>
+            
+                                <div class="col-span-1 md:col-span-2">
+                                    <label class="block text-sm font-bold text-primary mb-2">Alamat Lengkap</label>
+                                    <textarea name="alamat" rows="2" placeholder="Alamat domisili" class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" required></textarea>
+                                </div>
+
+                                <div class="col-span-1 md:col-span-2">
+                                    <label class="block text-sm font-bold text-primary mb-2">Password Login</label>
+                                    <input type="password" name="password" placeholder="Minimal 6 karakter" class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" required>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 flex justify-end gap-3 pt-6 border-t border-gray-50">
+                                <button type="button" onclick="closeModal()" class="inline-flex items-center justify-center rounded-xl bg-gray-100 px-6 py-3 text-sm font-bold text-gray-600 hover:bg-gray-200 transition-all cursor-pointer">
+                                    Batal
+                                </button>
+                                <button type="submit" class="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all cursor-pointer">
+                                    Simpan Data
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endpush
+
+    <script>
+        function openModal() {
+            document.getElementById('createModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('createModal').classList.add('hidden');
+        }
+
+        // Close modal on ESC key press
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
 @endsection

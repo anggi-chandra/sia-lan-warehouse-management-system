@@ -10,7 +10,7 @@ class BagGudangController extends Controller
 {
     public function index()
     {
-        $bagGudangs = BagGudang::all();
+        $bagGudangs = BagGudang::latest()->paginate(10);
         return view('bag-gudang.index', compact('bagGudangs'));
     }
 
