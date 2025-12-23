@@ -26,10 +26,10 @@
 */
 
 :root {
-    --background: 131 46% 83%;
-    /* Mint Green */
+    --background: 210 40% 98%;
+    /* Slate 50 - Clean Professional Background */
     --foreground: 219 35% 25%;
-    /* Dark Navy Text */
+    /* Dark Navy Text (Kept) */
 
     --card: 0 0% 100%;
     --card-foreground: 219 35% 25%;
@@ -38,31 +38,30 @@
     --popover-foreground: 219 35% 25%;
 
     --primary: 219 35% 25%;
-    /* Dark Navy */
+    /* Dark Navy (Kept) */
     --primary-foreground: 0 0% 100%;
-    /* White text on Navy */
 
     --secondary: 226 66% 55%;
-    /* Royal Blue */
+    /* Royal Blue (Kept) */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 131 30% 90%;
-    /* Light Mint */
-    --muted-foreground: 219 20% 40%;
+    --muted: 210 40% 96.1%;
+    /* Slate 100 */
+    --muted-foreground: 215.4 16.3% 46.9%;
 
     --accent: 40 89% 54%;
-    /* Golden Yellow */
+    /* Golden Yellow (Kept) */
     --accent-foreground: 219 35% 25%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 219 20% 85%;
-    --input: 226 20% 90%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
     --ring: 226 66% 55%;
 
-    --radius: 1rem;
-    /* Playful rounded corners */
+    --radius: 0.75rem;
+    /* Slightly more professional rounding */
 }
 
 /* Dark mode - Dark Navy Background */
