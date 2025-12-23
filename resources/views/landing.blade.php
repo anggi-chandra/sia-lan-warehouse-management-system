@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Manajemen Gudang - SIA LAN</title>
+    <title>Sistem Manajemen Gudang - Warehouse Management System</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-background text-foreground antialiased font-sans">
@@ -15,7 +15,7 @@
             <div class="container mx-auto flex items-center justify-between px-6">
                 <a href="#" class="flex items-center space-x-2 font-extrabold text-primary hover:opacity-80 transition-opacity">
                     <i class="fas fa-boxes-stacked text-2xl text-secondary"></i>
-                    <span class="text-xl tracking-tight">SIA LAN Warehouse</span>
+                    <span class="text-xl tracking-tight">Warehouse Management System</span>
                 </a>
                 <nav class="flex items-center">
                     <a href="{{ route('login') }}" class="rounded-full bg-white/30 backdrop-blur-sm px-6 py-2 text-sm font-bold text-primary hover:bg-white/50 transition-colors border border-white/20">
@@ -117,7 +117,7 @@
                     
                     <div class="mt-20 border-t border-white/10 pt-8">
                          <p class="text-sm text-white/60 font-medium">
-                            &copy; {{ date('Y') }} SIA LAN Warehouse. Designed with ❤️
+                            &copy; {{ date('Y') }} Warehouse Management System. Designed with ❤️
                         </p>
                     </div>
                 </div>

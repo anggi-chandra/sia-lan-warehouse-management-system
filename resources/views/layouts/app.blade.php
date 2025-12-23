@@ -19,7 +19,7 @@
             
             <!-- Mobile Toggle (Visible only on mobile) -->
             <div class="md:hidden p-4 bg-primary text-white flex items-center justify-between">
-                <span class="font-bold text-lg">SIA LAN Warehouse</span>
+                <span class="font-bold text-lg">WMS Warehouse</span>
                 <button class="text-white hover:text-accent focus:outline-none">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
@@ -31,7 +31,7 @@
 
             <!-- Footer for Dashboard -->
             <footer class="py-6 text-center text-sm font-bold text-primary/40">
-                &copy; {{ date('Y') }} SIA LAN Warehouse System
+                &copy; {{ date('Y') }} Warehouse Management System
             </footer>
         </main>
     </div>

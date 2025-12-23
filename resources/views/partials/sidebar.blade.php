@@ -3,7 +3,7 @@
     <div class="h-20 flex items-center px-8 border-b border-white/10">
         <div class="flex items-center gap-3 text-white font-extrabold text-xl tracking-tight">
             <i class="fas fa-boxes-stacked text-secondary text-2xl"></i>
-            <span>SIA LAN</span>
+            <span>WMS</span>
         </div>
     </div>
 
